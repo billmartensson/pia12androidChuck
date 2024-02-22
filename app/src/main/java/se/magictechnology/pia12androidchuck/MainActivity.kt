@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -56,11 +55,14 @@ fun ChuckNav(
         }
         composable(ChuckScreen.Categories.name) {
             ChuckCategories(chuckVM,
-                goCategory = { navController.navigate(ChuckScreen.Category.name) }
+                goCategory = {
+                    navController.navigate(ChuckScreen.Category.name + "/" + it)
+                }
             )
         }
-        composable(ChuckScreen.Category.name) {
-            ChuckCategory(chuckVM)
+        composable(ChuckScreen.Category.name + "/{catname}") {
+            val thecat = it.arguments?.getString("catname")
+            ChuckCategory(chuckVM, thecat!!)
         }
         composable(ChuckScreen.Search.name) {
             ChuckSearch(chuckVM)

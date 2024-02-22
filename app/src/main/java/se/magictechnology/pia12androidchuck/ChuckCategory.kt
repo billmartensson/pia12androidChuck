@@ -9,14 +9,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun ChuckCategory(chuckVM : ChuckViewModel) {
+fun ChuckCategory(chuckVM : ChuckViewModel, categoryname : String) {
     Column {
         Text("CATEGORY", modifier = Modifier.background(Color.White))
+
+        Text(categoryname)
     }
 }
 
 @Preview
 @Composable
 fun ChuckCategoryPreview() {
-    ChuckCategory(ChuckViewModel())
+    ChuckCategory(ChuckViewModel(),"Test")
 }
